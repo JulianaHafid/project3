@@ -15,7 +15,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
   }
 
   componentWillReceiveProps(nextProps) {
-
+    console.log("nextProps" + nextProps);
     axios.get('/employer/'+ nextProps.employer)
       .then( (response) => {
         console.log("ActiveEmployer: ",response);
@@ -42,6 +42,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
 
   addNewEmployer = (e) => {
     console.log('addNewEmployer');
+    
     axios.post('/employer', this.state.employer)
       .then( (response) => {
         this.setState({
@@ -116,7 +117,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
           <label htmlFor="contact">Contact</label>
           <input type="text"
                  className="form-control"
-                 id="Contact"
+                 id="contact"
                  placeholder="Phone Number"
                  onChange={this.onChange}
                  value={this.state.employer && this.state.employer.contact ? this.state.employer.contact : ""}/>
@@ -132,11 +133,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
         </div>
         <button type="button"
                 className="btn btn-primary col-md-3"
-                onClick={ this.updateEmployer }>Save</button>
-        <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.deleteEmployer }>Delete</button>
-
+                onClick={ this.updateEmployer }>Update</button>
         <button type="button"
                 className="btn btn-primary col-md-3"
                 onClick={ this.addNewEmployer }>Create</button>

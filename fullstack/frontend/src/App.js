@@ -6,6 +6,8 @@ import Create from './components/Create/Create';
 import Login from './components/Login/Login';
 import JobView from './components/JobView/JobView';
 import EmployerForm from './components/EmployerForm/EmployerForm';
+import TalentForm from './components/TalentForm/TalentForm';
+import Search from './components/Search/Search';
 import './App.css';
 
 class App extends Component {
@@ -28,12 +30,22 @@ class App extends Component {
   }
 
   render() {
-    //const isLoggedIn = this.props.user._id;
+    const isLoggedIn = this.props.user._id;
 
     return (
       <div className="App container-fluid">
         <div className="row">
-          <JobView/>
+          {isLoggedIn ? (
+            <div className="isLoggedIn">
+              <div className="col-md-12" id="JobList">
+                <TalentForm/>
+              </div>
+            </div>
+          ) : (
+            <div className="col-md-4 col-md-offset-4" id="Login">
+              <Login/>
+            </div>
+          )}
         </div>
       </div>
     );

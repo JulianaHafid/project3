@@ -5,14 +5,15 @@ import JobReducer from '../reducers/jobReducer.js'
 import userReducer from '../reducers/userReducer.js'
 import InternalReducer from '../reducers/Internal'
 import EmployerReducer from '../reducers/employerReducer'
-
+import TalentReducer from '../reducers/talentReducer'
 export let initStore = () => {
 
   const reducer = combineReducers( {
     jobs: JobReducer,
     user: userReducer,
     internal: InternalReducer,
-    employers: EmployerReducer
+    employers: EmployerReducer,
+    talents: TalentReducer,
   });
 
   const store = createStore(reducer, compose(

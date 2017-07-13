@@ -46,7 +46,6 @@ export class JobList extends Component { // eslint-disable-line react/prefer-sta
     const jobs = searchJobs(this.props.searchTerm, this.state.jobs);
     // console.log("Returned Jobs from search: " + this.state.jobs[0].title);
     return jobs.map((job) => {
-
       let isActive = job._id === this.state.activeJob ? "active" : "";
       return ( <JobListView job={job} key={ job._id } onClick={this.onClick} active={isActive} /> )
     });

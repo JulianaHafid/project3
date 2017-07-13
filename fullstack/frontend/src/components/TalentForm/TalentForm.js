@@ -5,50 +5,63 @@ import axios from 'axios';
 /**
  * Create
  */
-export class Create extends Component { // eslint-disable-line react/prefer-stateless-function
+export class TalentForm extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props);
 
     this.state = {
-      job: null
+      talent: null
     }
   }
 
-
-
   componentWillReceiveProps(nextProps) {
-
-    axios.get('/job/'+ nextProps.job)
+    console.log("nextProps" + nextProps);
+    axios.get('/talent/'+ nextProps.talent)
       .then( (response) => {
-        console.log("ActiveJob: ",response);
+        console.log("ActiveTalent: ",response);
         this.setState({
-          job: response.data
+          talent: response.data
         })
       })
       .catch((error)=> {
-        console.log(error);
+        console.log("Err from TalentForm: " + error);
       });
   }
 
   onChange = (e) => {
 
-    let job = this.state.job || {};
+    let talent = this.state.talent || {};
     const key = e.target.id;
     const value = e.target.value;
-    job[key] = value;
+    talent[key] = value;
 
     this.setState({
-      job: job
+      talent: talent
     });
   }
 
-  addNewJob = (e) => {
-    console.log('addNewJob');
-
-    axios.post('/job', this.state.job)
+  addNewTalent = (e) => {
+    console.log('addNewTalent');
+    console.log (this.state.talent);
+    axios.post('/talent', this.state.talent)
       .then( (response) => {
         this.setState({
-          job: response.data
+          talent: response.data
+        })
+      })
+      .catch((error)=> {
+        console.log("addNewTalent error: " + error);
+      });
+  }
+
+
+  updateTalent = (e) => {
+    console.log('updateTalent');
+
+    axios.put('/talent/'+ this.state.talent._id, {talent: this.state.talent})
+      .then( (response) => {
+        this.setState({
+          talent: response.data
         })
       })
       .catch((error)=> {
@@ -56,27 +69,13 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
       });
   }
 
-  updateJob = (e) => {
-    console.log('updateJob');
+  deleteTalent = (e) => {
+    console.log('deleteTalent');
 
-    axios.put('/job/'+ this.state.job._id, {job: this.state.job})
+    axios.delete('/talent/'+ this.state.talent._id)
       .then( (response) => {
         this.setState({
-          job: response.data
-        })
-      })
-      .catch((error)=> {
-        console.log(error);
-      });
-  }
-
-  deleteJob = (e) => {
-    console.log('deleteJob');
-
-    axios.delete('/job/'+ this.state.job._id)
-      .then( (response) => {
-        this.setState({
-          job: null
+          talent: null
         })
       })
       .catch((error)=> {
@@ -101,36 +100,36 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
     return (
       <div className="row">
       <div className="col-md-12 header">
-        <h2>Job Post</h2>
+        <h2>Talent Profile</h2>
       </div>
       <form className="col-md-6 col-md-offset-1">
         <div className="clearfix"></div>
         <div className="form-group">
-          <label htmlFor="title">Title</label>
+          <label htmlFor="name">Name</label>
           <input type="text"
                  className="form-control"
-                 id="title"
-                 placeholder="Job Title"
+                 id="name"
+                 placeholder="Talent Name"
                  onChange={this.onChange}
-                 value={this.state.job && this.state.job.title ? this.state.job.title : ""}/>
+                 value={this.state.talent && this.state.talent.name ? this.state.talent.name : ""}/>
         </div>
         <div className="form-group">
-          <label htmlFor="skillList">SkillList</label>
+          <label htmlFor="contact">Contact</label>
           <input type="text"
                  className="form-control"
-                 id="skillList"
-                 placeholder="SkillList"
+                 id="contact"
+                 placeholder="Phone Number"
                  onChange={this.onChange}
-                 value={ this.state.job && this.state.job.skillList ? this.state.job.skillList : ""}/>
+                 value={this.state.talent && this.state.talent.contact ? this.state.talent.contact : ""}/>
         </div>
         <div className="form-group">
-          <label htmlFor="closingDate">Application Closing Date</label>
+          <label htmlFor="address">Address</label>
           <input type="text"
                  className="form-control"
-                 id="closingDate"
-                 placeholder="Closing Date"
+                 id="address"
+                 placeholder="Address"
                  onChange={this.onChange}
-                 value={ this.state.job && this.state.job.closingDate ? this.state.job.closingDate : ""}/>
+                 value={ this.state.talent && this.state.talent.address ? this.state.talent.address : ""}/>
         </div>
         <div className="form-group">
           <label htmlFor="qualification">Qualification</label>
@@ -139,31 +138,36 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
                  id="qualification"
                  placeholder="Qualification"
                  onChange={this.onChange}
-                 value={ this.state.job && this.state.job.qualification ? this.state.job.qualification : ""}/>
+                 value={ this.state.talent && this.state.talent.qualification ? this.state.talent.qualification : ""}/>
         </div>
         <div className="form-group">
-          <label htmlFor="maxSalary">Max Salary</label>
+          <label htmlFor="salary">Min Salary</label>
           <input type="text"
                  className="form-control"
-                 id="maxSalary"
-                 placeholder="Max Salary"
+                 id="salary"
+                 placeholder="Min Salary"
                  onChange={this.onChange}
-                 value={ this.state.job && this.state.job.maxSalary ? this.state.job.maxSalary : ""}/>
+                 value={ this.state.talent && this.state.talent.salary ? this.state.talent.salary : ""}/>
         </div>
-        <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.updateJob }>Update</button>
-        <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.deleteJob }>Delete</button>
+        <div className="form-group">
+          <label htmlFor="skillList">Skill</label>
+          <input type="text"
+                 className="form-control"
+                 id="skillList"
+                 placeholder="Skill"
+                 onChange={this.onChange}
+                 value={ this.state.talent && this.state.talent.skillList ? this.state.talent.skillList : ""}/>
+        </div>
 
         <button type="button"
                 className="btn btn-primary col-md-3"
-                onClick={ this.addNewJob }>Add new job</button>
+                onClick={ this.updateTalent }>Save</button>
+        <button type="button"
+                className="btn btn-primary col-md-3"
+                onClick={ this.addNewTalent }>Create</button>
         <button type="button"
                 className="btn btn-primary col-md-3"
                 onClick={ this.logout }>Logout</button>
-
       </form>
 
       </div>
@@ -171,4 +175,4 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
   }
 }
 
-export default Create;
+export default TalentForm;

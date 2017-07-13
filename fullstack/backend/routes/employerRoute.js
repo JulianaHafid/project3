@@ -21,17 +21,31 @@ router.get('/', (req, res, next) => {
 ********CREATE employer page. (/employer)
 **************************************/
 router.post('/', (req, res, next) => {
-  console.log("There is a POST employer Request");
-  const employer = new Employer();
-  employer.email = req.body.email || "Unknown";
-  employer.name = req.body.name || "Unknown";
-  employer.contact = req.body.contact || "-1";
-  employer.address = req.body.address || "Unknown";
-  employer.password = req.body.password || "Unknown";
 
+  console.log("got POST request...");
+  console.log("Current user id: "+req.user.id);
+  const _id = req.user.id;
+  const email = req.user.email;
+  const role = "Employer";
+  const name = req.body.name;
+  const contact = req.body.contact;
+  const address = req.body.address;
+
+  const employer = new Employer({
+    _id: _id,
+    email: email,
+    role: role,
+    name: name,
+    contact: contact,
+    address: address
+  });
+
+  console.log("Employer: " + employer);
   employer.save((err, employer) => {
+       console.log("Saving employer..",employer);
        res.json(employer);
   });
+
 });
 
 /*************************************

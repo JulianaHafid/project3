@@ -19,10 +19,10 @@ router.post('/login', function(req, res, next) {
     passport.authenticate('local', function(error, user, info) {
         if(error) {
             console.log(error);
-            return res.json({'error':'database','message': "Something went seriously wrong. Contact the dev team."});
+            return res.json({'error':'database','message': "Something unexpected occurs. Contact the dev team."});
         }
         if(!user) {
-          return res.json({'error':'user','message': "Wrong password or email"})
+          return res.json({'error':'user','message': "Wrong password or email. For new user please sign up."})
         }
 
         req.logIn(user, function(err) {

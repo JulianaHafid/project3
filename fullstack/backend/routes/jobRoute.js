@@ -57,7 +57,7 @@ router.post('/', (req, res, next) => {
     console.log(job);
     job.save((err, job) => {
          console.log("Saving..",job);
-         res.json(err);
+         res.json(job);
     });
   });
 });

@@ -21,22 +21,39 @@ router.get('/', (req, res, next) => {
 ********CREATE talent page. (/talent)
 **************************************/
 router.post('/', (req, res, next) => {
-  console.log("There is a POST Request");
-  const talent = new Talent();
-  talent.email = req.body.email || "Unknown";
-  talent.name = req.body.name || "Unknown";
-  talent.contact = req.body.contact || "Unknown";
-  talent.address = req.body.address || "Unknown";
-  talent.qualification = req.body.qualification || "Unknown";
-  talent.skillList = req.body.skillList || "[]";
-  talent.salary = req.body.salary || "-1";
-  talent.password = req.body.password || "Unknown";
 
+  console.log("got POST talent request...");
+  
+  console.log("Current user id: "+req.user.id);
+  const _id = req.user.id;
+  const email = req.user.email;
+  const role = "Talent";
+  const name = req.body.name;
+  const contact = req.body.contact;
+  const address = req.body.address;
+  const qualification = req.body.qualification;
+  const salary = req.body.salary;
+  const skillList = req.body.skillList;
+
+  const talent = new Talent({
+    _id: _id,
+    email: email,
+    role: role,
+    name: name,
+    contact: contact,
+    address: address,
+    qualification: qualification,
+    salary: salary,
+    skillList: skillList
+  });
+
+  console.log("Talent: " + talent);
   talent.save((err, talent) => {
+       console.log("Saving talent..",talent);
        res.json(talent);
   });
-});
 
+});
 /*************************************
 ********READ talent page. (/talent/<id>)
 **************************************/
