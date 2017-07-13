@@ -44,7 +44,7 @@ export class Login extends Component { // eslint-disable-line react/prefer-state
           });
         }else{
           console.error("AJAX: Logged in @ '/auth/user'");
-          window.location.href = "/profile";
+          window.location.href = "/";
         }
       })
       .catch((error)=> {
@@ -68,7 +68,7 @@ export class Login extends Component { // eslint-disable-line react/prefer-state
           });
         }else{
           console.log("AJAX: Signed up @ '/auth/signup'");
-          window.location.href = "/";
+          window.location.href = "/profile";
         }
       })
       .catch((error)=> {
@@ -90,6 +90,7 @@ export class Login extends Component { // eslint-disable-line react/prefer-state
       <div className="login">
         <Header />
         <form>
+          <h3> Login or Sign up </h3>
           <div className="error">{this.state.error}</div>
           <div className="form-group">
             <label htmlFor="email">Email address</label>

@@ -1,20 +1,19 @@
 import React, { Component,PropTypes } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 
-import './Create.css';
+import './CreateTalent.css';
 /**
  * Create
  */
-export class Create extends Component { // eslint-disable-line react/prefer-stateless-function
+export class CreateTalent extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props);
 
     this.state = {
       job: null
-
     }
   }
+
 
 
   componentWillReceiveProps(nextProps) {
@@ -43,10 +42,26 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
     });
   }
 
-  addNewJob = (e) => {
-    console.log('addNewJob');
+  // addNewJob = (e) => {
+  //   console.log('addNewJob');
+  //
+  //   axios.post('/job', this.state.job)
+  //     .then( (response) => {
+  //       this.setState({
+  //         job: response.data
+  //       })
+  //     })
+  //     .catch((error)=> {
+  //       console.log(error);
+  //     });
+  // }
 
-    axios.post('/job', this.state.job)
+  applyJob = (e) => {
+    console.log('**applyJob**');
+    console.log('**applyJob**');
+    console.log('**applyJob**');
+
+    axios.post('https://formspree.io/julianahafid@gmail.com', this.state.job)
       .then( (response) => {
         this.setState({
           job: response.data
@@ -99,16 +114,17 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
+
     return (
       <div className="row">
       <div className="col-md-12 header">
         <h2>Job Post</h2>
       </div>
-      <form className="col-md-6 col-md-offset-1">
+      <form id="contactform"  action="https://formspree.io/julianahafid@gmail.com" method="POST" className="col-md-6 col-md-offset-1">
         <div className="clearfix"></div>
         <div className="form-group">
           <label htmlFor="title">Title</label>
-          <input type="text"
+          <input type="text" name="title"
                  className="form-control"
                  id="title"
                  placeholder="Job Title"
@@ -117,7 +133,7 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
         </div>
         <div className="form-group">
           <label htmlFor="skillList">SkillList</label>
-          <input type="text"
+          <input type="text" name="skillList"
                  className="form-control"
                  id="skillList"
                  placeholder="SkillList"
@@ -131,6 +147,7 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
                  id="closingDate"
                  placeholder="DD/MM/YYYY"
                  onChange={this.onChange}
+                 name='closingDate'
                  value={ this.state.job && this.state.job.closingDate ? this.state.job.closingDate : ""}/>
         </div>
         <div className="form-group">
@@ -140,6 +157,7 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
                  id="qualification"
                  placeholder="Qualification"
                  onChange={this.onChange}
+                 name='qualification'
                  value={ this.state.job && this.state.job.qualification ? this.state.job.qualification : ""}/>
         </div>
         <div className="form-group">
@@ -149,33 +167,22 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
                  id="maxSalary"
                  placeholder="Max Salary"
                  onChange={this.onChange}
+                 name='maxSalary'
                  value={ this.state.job && this.state.job.maxSalary ? this.state.job.maxSalary : ""}/>
         </div>
-        <Link to={'/jobViewEmployer'}>
+        <input type="submit" value="Apply Job" className="btn btn-primary col-md-3" />
+
         <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.updateJob }>Update</button>
-        </Link>
-        <Link to={'/jobViewEmployer'}>
-        <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.deleteJob }>Delete</button>
-        </Link>
-        <Link to={'/jobViewEmployer'}>
-        <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.addNewJob }>Add new job</button>
-        </Link>
-        <Link to={'/'}>
-        <button type="button"
-                className="btn btn-primary col-md-3"
+                className="btn btn-primary col-md-3 col-md-offset-6"
                 onClick={ this.logout }>Logout</button>
-        </Link>
+
       </form>
 
       </div>
+
+
     );
   }
 }
 
-export default Create;
+export default CreateTalent;

@@ -23,11 +23,11 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
 
   console.log("got POST talent request...");
-  
+
   console.log("Current user id: "+req.user.id);
   const _id = req.user.id;
   const email = req.user.email;
-  const role = "Talent";
+  const role = req.user.role;
   const name = req.body.name;
   const contact = req.body.contact;
   const address = req.body.address;
@@ -52,6 +52,7 @@ router.post('/', (req, res, next) => {
        console.log("Saving talent..",talent);
        res.json(talent);
   });
+
 
 });
 /*************************************

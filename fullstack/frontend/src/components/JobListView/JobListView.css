@@ -19,5 +19,10 @@
 }
 
 .title {
-  color:red;
+  color:blue;
+  text-decoration: underline;
+}
+
+span {
+  color: blue;
 }

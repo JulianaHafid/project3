@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import JobListView from '../JobListView/JobListView';
+import Search from '../Search/Search';
 import {searchJobs} from '../../API/JobAPI';
 
 import './JobList.css';
@@ -54,6 +55,7 @@ export class JobList extends Component { // eslint-disable-line react/prefer-sta
   render() {
     return (
       <div className="row" id="JobList">
+          <Search />
          {this.addJobs()}
       </div>
     );

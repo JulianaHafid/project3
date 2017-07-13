@@ -1,6 +1,8 @@
 import React, { Component,PropTypes } from 'react';
-import axios from 'axios';
+import {Link} from 'react-router-dom';
 
+import axios from 'axios';
+import './TalentForm.css';
 
 /**
  * Create
@@ -102,7 +104,7 @@ export class TalentForm extends Component { // eslint-disable-line react/prefer-
       <div className="col-md-12 header">
         <h2>Talent Profile</h2>
       </div>
-      <form className="col-md-6 col-md-offset-1">
+      <form className="col-md-6 col-md-offset-1 talentform">
         <div className="clearfix"></div>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -159,16 +161,16 @@ export class TalentForm extends Component { // eslint-disable-line react/prefer-
                  value={ this.state.talent && this.state.talent.skillList ? this.state.talent.skillList : ""}/>
         </div>
 
+        <Link to={'/jobView'}>
         <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.updateTalent }>Save</button>
+                className="btn btn-primary col-md-3 "
+                onClick={ this.addNewTalent }>Create Profile</button>
+        </Link>
         <button type="button"
-                className="btn btn-primary col-md-3"
-                onClick={ this.addNewTalent }>Create</button>
-        <button type="button"
-                className="btn btn-primary col-md-3"
+                className="btn btn-primary col-md-3 col-md-offset-6"
                 onClick={ this.logout }>Logout</button>
       </form>
+
 
       </div>
     );

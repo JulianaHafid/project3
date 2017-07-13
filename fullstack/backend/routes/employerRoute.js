@@ -45,6 +45,7 @@ router.post('/', (req, res, next) => {
        console.log("Saving employer..",employer);
        res.json(employer);
   });
+  
 
 });
 

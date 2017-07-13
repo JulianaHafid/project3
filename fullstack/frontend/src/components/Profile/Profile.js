@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import EmployerForm from '../EmployerForm/EmployerForm';
 import TalentForm from '../TalentForm/TalentForm';
 import Login from '../Login/Login';
+import Header from '../Header/Header';
 import './Profile.css';
 
 class Profile extends Component {
@@ -29,7 +30,8 @@ class Profile extends Component {
     const isLoggedIn = this.props.user._id;
 
     return (
-      
+      <div>
+      <Header className= "col-md-12"/>
       <div className="App container-fluid">
         <div className="row">
           {isLoggedIn ? (
@@ -44,6 +46,7 @@ class Profile extends Component {
             </div>
           )}
         </div>
+      </div>
       </div>
     );
   }

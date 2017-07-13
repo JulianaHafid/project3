@@ -10,18 +10,13 @@ const Nav = () => {
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink activeClassName='active' to='/login'>
-          Login
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink activeClassName='active' to='/jobView'>
+        <NavLink activeClassName='active' to='/jobViewEmployer'>
           Job Listing
         </NavLink>
       </li>
       <li className="nav-item">
         <NavLink activeClassName='active' to='/profile'>
-          Profile
+          <span className="profilespan">Profile</span>
         </NavLink>
       </li>
     </ul>

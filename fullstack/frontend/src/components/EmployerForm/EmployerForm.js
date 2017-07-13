@@ -1,7 +1,9 @@
 import React, { Component,PropTypes } from 'react';
+import {Link} from 'react-router-dom';
+
 import axios from 'axios';
 
-
+import './EmployerForm.css';
 /**
  * Create
  */
@@ -42,7 +44,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
 
   addNewEmployer = (e) => {
     console.log('addNewEmployer');
-    
+
     axios.post('/employer', this.state.employer)
       .then( (response) => {
         this.setState({
@@ -77,6 +79,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
           employer: null
         })
       })
+
       .catch((error)=> {
         console.log(error);
       });
@@ -134,9 +137,11 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
         <button type="button"
                 className="btn btn-primary col-md-3"
                 onClick={ this.updateEmployer }>Update</button>
+        <Link to={'/jobView'}>
         <button type="button"
                 className="btn btn-primary col-md-3"
                 onClick={ this.addNewEmployer }>Create</button>
+        </Link>
         <button type="button"
                 className="btn btn-primary col-md-3"
                 onClick={ this.logout }>Logout</button>

@@ -6,6 +6,9 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+span.profilespan{
+	color: #ADD8E6;
+}
 body {
 	color: #5a5a5a;
 	font-family: 'Lato', sans-serif;

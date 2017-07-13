@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import JobList from '../JobList/JobList';
-import Create from '../Create/Create';
 import Login from '../Login/Login';
 import Search from '../Search/Search';
 import Header from '../Header/Header';
-import CreateTalent from '../CreateTalent/CreateTalent';
-import './JobView.css';
+import Create from '../Create/Create';
+import './JobViewEmployer.css';
 
-class JobView extends Component {
+class JobViewEmployer extends Component {
   constructor(props){
     super(props);
 
@@ -30,7 +29,7 @@ class JobView extends Component {
 
   render() {
     const isLoggedIn = this.props.user._id;
-    console.log("isLoggedIn: "+ isLoggedIn)
+
     return (
       <div className="App container-fluid">
       <Header className="col-md-12" />
@@ -43,7 +42,7 @@ class JobView extends Component {
                 <JobList setActiveJob={ this.setActiveJob } activeJob= {this.state.activeJob}/>
               </div>
               <div className="col-md-9" id="JobEdit">
-                <CreateTalent job={this.state.activeJob}/>
+                <Create job={this.state.activeJob}/>
               </div>
             </div>
           ) : (
@@ -69,4 +68,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(JobView);
+export default connect(mapStateToProps, mapDispatchToProps)(JobViewEmployer);

@@ -32,17 +32,28 @@ export class Search extends Component { // eslint-disable-line react/prefer-stat
 
   render() {
     return (
-        <div >
-          <div className="input-group">
-            <input className="form-control input-md"
-                   type="text"
-                   placeholder="Search"
-                   onKeyUp={this.onChange} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-2">
+            <h6></h6>
           </div>
         </div>
+        <div className="row">
+          <div className="col-lg-4 ">
+            <form action className="search-form">
+              <div className="form-group has-feedback">
+                <label htmlFor="search" className="sr-only">Search</label>
+                <input type="text" onKeyUp={this.onChange} className="form-control" name="search" id="search" placeholder="Search Job Title" />
+                <span className="glyphicon glyphicon-search form-control-feedback" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     );
   }
 }
+
 
 
 // Define state within the component
