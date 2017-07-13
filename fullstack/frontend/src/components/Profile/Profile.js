@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import JobList from '../JobList/JobList';
-import Create from '../Create/Create';
+import EmployerForm from '../EmployerForm/EmployerForm';
+import TalentForm from '../TalentForm/TalentForm';
 import Login from '../Login/Login';
-import Search from '../Search/Search';
-import './JobView.css';
+import './Profile.css';
 
-class JobView extends Component {
+class Profile extends Component {
   constructor(props){
     super(props);
 
@@ -30,16 +29,13 @@ class JobView extends Component {
     const isLoggedIn = this.props.user._id;
 
     return (
+      
       <div className="App container-fluid">
-      <Search className="col-md-12" />
         <div className="row">
           {isLoggedIn ? (
             <div className="isLoggedIn">
-              <div className="col-md-2" id="JobList">
-                <JobList setActiveJob={ this.setActiveJob } activeJob= {this.state.activeJob}/>
-              </div>
-              <div className="col-md-10" id="JobEdit">
-                <Create job={this.state.activeJob}/>
+              <div className="col-md-12" id="Profile">
+                <EmployerForm/>
               </div>
             </div>
           ) : (
@@ -64,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(JobView);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

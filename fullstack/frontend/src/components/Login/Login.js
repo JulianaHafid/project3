@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-
+import Header from '../Header/Header';
 import './Login.css';
+
 
 /**
  * Login
@@ -43,7 +44,7 @@ export class Login extends Component { // eslint-disable-line react/prefer-state
           });
         }else{
           console.error("AJAX: Logged in @ '/auth/user'");
-          window.location.href = "/";
+          window.location.href = "/profile";
         }
       })
       .catch((error)=> {
@@ -87,6 +88,7 @@ export class Login extends Component { // eslint-disable-line react/prefer-state
   render() {
     return (
       <div className="login">
+        <Header />
         <form>
           <div className="error">{this.state.error}</div>
           <div className="form-group">
