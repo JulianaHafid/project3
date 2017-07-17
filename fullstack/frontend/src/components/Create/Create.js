@@ -116,7 +116,7 @@ export class Create extends Component { // eslint-disable-line react/prefer-stat
                  value={this.state.job && this.state.job.title ? this.state.job.title : ""}/>
         </div>
         <div className="form-group">
-          <label htmlFor="skillList">SkillList</label>
+          <label htmlFor="skillList">Skill List</label>
           <input type="text"
                  className="form-control"
                  id="skillList"

@@ -23,7 +23,6 @@ export class JobList extends Component { // eslint-disable-line react/prefer-sta
   }
 
   componentDidMount() {
-
     console.log("JobList.componentDidMount");
 
     axios.get('/job/')

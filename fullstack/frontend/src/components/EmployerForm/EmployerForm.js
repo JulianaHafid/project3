@@ -17,7 +17,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("nextProps" + nextProps);
+    console.log("nextProps" + nextProps.employer);
     axios.get('/employer/'+ nextProps.employer)
       .then( (response) => {
         console.log("ActiveEmployer: ",response);
@@ -95,11 +95,11 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
         console.log(error);
       });
 
-
   }
 
 
   render() {
+
     return (
       <div className="row">
       <div className="col-md-12 header">
@@ -115,6 +115,7 @@ export class EmployerForm extends Component { // eslint-disable-line react/prefe
                  placeholder="Company Name"
                  onChange={this.onChange}
                  value={this.state.employer && this.state.employer.name ? this.state.employer.name : ""}/>
+
         </div>
         <div className="form-group">
           <label htmlFor="contact">Contact</label>

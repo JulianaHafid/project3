@@ -42,26 +42,10 @@ export class CreateTalent extends Component { // eslint-disable-line react/prefe
     });
   }
 
-  // addNewJob = (e) => {
-  //   console.log('addNewJob');
-  //
-  //   axios.post('/job', this.state.job)
-  //     .then( (response) => {
-  //       this.setState({
-  //         job: response.data
-  //       })
-  //     })
-  //     .catch((error)=> {
-  //       console.log(error);
-  //     });
-  // }
+  addNewJob = (e) => {
+    console.log('addNewJob');
 
-  applyJob = (e) => {
-    console.log('**applyJob**');
-    console.log('**applyJob**');
-    console.log('**applyJob**');
-
-    axios.post('https://formspree.io/julianahafid@gmail.com', this.state.job)
+    axios.post('/job', this.state.job)
       .then( (response) => {
         this.setState({
           job: response.data
@@ -71,6 +55,7 @@ export class CreateTalent extends Component { // eslint-disable-line react/prefe
         console.log(error);
       });
   }
+
 
   updateJob = (e) => {
     console.log('updateJob');

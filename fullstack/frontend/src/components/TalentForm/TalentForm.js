@@ -95,7 +95,6 @@ export class TalentForm extends Component { // eslint-disable-line react/prefer-
         console.log(error);
       });
 
-
   }
 
   render() {

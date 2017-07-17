@@ -11,25 +11,7 @@ import './Home.css';
  * About
  */
 export class Home extends Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props){
-    super(props);
-
-    this.state = {
-      activeJob: ""
-    }
-  }
-
-
-  setActiveJob = (id) => {
-
-    console.log("Active job: ", id);
-
-    this.setState({
-      activeJob: id
-    })
-  }
-
-
+  
   render() {
      const isLoggedIn = this.props.user._id;
     return (

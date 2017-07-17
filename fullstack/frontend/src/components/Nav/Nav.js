@@ -14,11 +14,6 @@ const Nav = () => {
           Job Listing
         </NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink activeClassName='active' to='/profile'>
-          <span className="profilespan">Profile</span>
-        </NavLink>
-      </li>
     </ul>
   )
 }

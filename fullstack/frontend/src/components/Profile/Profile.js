@@ -8,23 +8,7 @@ import Header from '../Header/Header';
 import './Profile.css';
 
 class Profile extends Component {
-  constructor(props){
-    super(props);
 
-    this.state = {
-      activeJob: ""
-    }
-  }
-
-
-  setActiveJob = (id) => {
-
-    console.log("Active job: ", id);
-
-    this.setState({
-      activeJob: id
-    })
-  }
 
   render() {
     const isLoggedIn = this.props.user._id;
@@ -37,7 +21,7 @@ class Profile extends Component {
           {isLoggedIn ? (
             <div className="isLoggedIn">
               <div className="col-md-12" id="Profile">
-                <EmployerForm/>
+                <TalentForm/>
               </div>
             </div>
           ) : (

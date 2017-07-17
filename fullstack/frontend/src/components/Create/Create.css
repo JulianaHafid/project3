@@ -1,3 +1,41 @@
-.header h2 {
-  color: #0297ff;
+.header {
+  color: #70a0f0
+}
+
+.col-md-12 {
+  text-align: center;
+}
+
+.col-md-6 {
+  align-items: center;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.btn-primary{
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 10px 15px;
+  font-size: 15px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #70a0f0;
+  border-color: #95a5a6;
+  border-radius: 1px;
 }
